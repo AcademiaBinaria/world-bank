@@ -1,10 +1,10 @@
-<ng-template *ngIf="countries.length>0; else noData">
+<div *ngIf="countries.length>0; else noData">
   <ul>
     <li *ngFor="let country of countries">
       <wb-country-list-item [country]="country"></wb-country-list-item>
     </li>
   </ul>
-</ng-template>
+</div>
 <ng-template #noData>
   <p>No countries to show</p>
 </ng-template>
