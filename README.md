@@ -2,11 +2,72 @@
 
 ## Api explorer
 
-- http://api.worldbank.org/v2/region/?per_page=100&format=json
-- http://api.worldbank.org/v2/region/ECS/country?per_page=100&format=json
-- http://api.worldbank.org/V2/incomeLevel/?per_page=100&format=json
-- http://api.worldbank.org/V2/incomeLevel/HIC/country?per_page=100&format=json
-- http://api.worldbank.org/V2/country/es?per_page=100&format=json
+- http://api.worldbank.org/V2/country?per_page=1000&format=json
+- http://api.worldbank.org/v2/region/?per_page=1000&format=json
+- http://api.worldbank.org/v2/region/ECS/country?per_page=1000&format=json
+- http://api.worldbank.org/v2/region/ECS?format=json
+
+
+
+## App Routes
+
+### /
+
+### /regions/
+
+### /regions/ECS
+
+## Modules
+
+> Infrastructure...
+
+### Core
+
+- ShellComponent
+  - HeaderComponent
+    - CountryCounterComponent
+  - MainComponent
+
+- CountriesService
+  - getAll$()
+  - filterByName(name)
+  - getByRegion$(code)
+- CountryCounterStore
+  - select$()
+  - set(value)
+- InterceptorService
+  - addPageAndFormat()
+
+### Shared
+
+- CountryListComponent
+  - CountryRowComponent
+
+> Per feature route...
+
+### Home
+
+- HomeComponent
+  - CountryFilterComponent
+  - CountryListComponent
+
+### Regions
+
+- RegionsComponent
+  - RegionsListComponent
+  - CountryListComponent
+- RegionsService
+  - getRegionsWithId$()
+
+### Region/:code
+
+- RegionComponent
+  - RegionDataComponent
+  - CountryListComponent
+- RegionService
+  - getRegion$(code)
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
