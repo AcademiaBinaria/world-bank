@@ -1,5 +1,13 @@
 # WorldBank
 
+## Api explorer
+
+- http://api.worldbank.org/v2/region/?per_page=100&format=json
+- http://api.worldbank.org/v2/region/ECS/country?per_page=100&format=json
+- http://api.worldbank.org/V2/incomeLevel/?per_page=100&format=json
+- http://api.worldbank.org/V2/incomeLevel/HIC/country?per_page=100&format=json
+- http://api.worldbank.org/V2/country/es?per_page=100&format=json
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
 ## Development server
