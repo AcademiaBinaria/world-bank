@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'wb-country-filter',
@@ -7,11 +7,24 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./country-filter.component.css']
 })
 export class CountryFilterComponent implements OnInit {
-  // private formBuilder; // = new FormBuilder();
+  @Output() private search = new EventEmitter<string>();
 
-  constructor(private formBuilder: FormBuilder) {
-    // this.formBuilder = formBuilder;
+  public filterForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  public searchCoutry() {
+    this.search.emit(this.filterForm.value.countryName);
   }
 
-  ngOnInit() {}
+  public showError() {
+    const control = this.filterForm.controls.countryName;
+    return control.invalid && control.touched;
+  }
+
+  public ngOnInit() {
+    this.filterForm = this.formBuilder.group({
+      countryName: new FormControl('', [Validators.required, Validators.minLength(2)])
+    });
+  }
 }

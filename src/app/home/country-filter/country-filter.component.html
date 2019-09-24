@@ -1,6 +1,10 @@
-<form>
+<form [formGroup]="filterForm">
   <label>Country Name:</label>
-  <input type="text">
+  <input type="text"
+         formControlName="countryName">
+  <small *ngIf="showError()">two chars min</small>
   <input type="button"
+         [disabled]="filterForm.invalid"
+         (click)="searchCoutry()"
          value="Search">
 </form>
