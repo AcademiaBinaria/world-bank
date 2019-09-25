@@ -1,2 +1,2 @@
 <wb-country-filter (search)="filterCountries($event)"></wb-country-filter>
-<wb-country-list [countries]="countries"></wb-country-list>
+<wb-country-list [countries]="countries$ | async"></wb-country-list>
