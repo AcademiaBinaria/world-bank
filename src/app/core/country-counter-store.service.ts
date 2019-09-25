@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryCounterStoreService {
-  private numCountries = 9;
+  private state: CountryCounter = { numCountries: 0 };
 
-  private numCountries$ = new Subject<number>();
+  private numCountries$ = new BehaviorSubject<CountryCounter>(this.get());
 
-  public set(numCountries) {
-    this.numCountries = numCountries;
-    this.numCountries$.next(this.numCountries);
+  public set(value: CountryCounter) {
+    this.state = { ...value };
+    this.numCountries$.next(this.get());
+  }
+
+  public get() {
+    return { ...this.state };
   }
 
   public select$() {
@@ -19,4 +23,8 @@ export class CountryCounterStoreService {
   }
 
   constructor() {}
+}
+
+export interface CountryCounter {
+  numCountries: number;
 }

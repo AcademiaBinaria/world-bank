@@ -31,10 +31,11 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit() {
     this.countries = [...this.allCountries];
+    this.store.set({ numCountries: this.countries.length });
   }
 
   public filterCountries(countryName: string) {
     this.countries = this.allCountries.filter(c => c.name.includes(countryName));
-    this.store.set(this.countries.length);
+    this.store.set({ numCountries: this.countries.length });
   }
 }
