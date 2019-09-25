@@ -1,37 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CountriesService } from '../core/countries.service';
 import { CountryCounterStoreService } from '../core/country-counter-store.service';
 import { Country } from '../shared/models/country.interface';
 
 @Component({
   selector: 'wb-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   public countries: Country[];
-  private allCountries: Country[] = [
-    {
-      name: 'Spain',
-      iso2: 'es',
-      region: 'ECS'
-    },
-    {
-      name: 'Portugal',
-      iso2: 'pt',
-      region: 'ECS'
-    },
-    {
-      name: 'Poland',
-      iso2: 'pl',
-      region: 'ECS'
-    }
-  ];
+  private allCountries: Country[] = [];
 
-  constructor(private store: CountryCounterStoreService) {}
+  constructor(private store: CountryCounterStoreService, private countriesServices: CountriesService) {}
 
   public ngOnInit() {
-    this.countries = [...this.allCountries];
-    this.store.set({ numCountries: this.countries.length });
+    this.countriesServices.getAll$().subscribe(res => {
+      this.allCountries = res;
+      this.countries = [...this.allCountries];
+      this.store.set({ numCountries: this.countries.length });
+    });
   }
 
   public filterCountries(countryName: string) {

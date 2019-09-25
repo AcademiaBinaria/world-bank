@@ -23,8 +23,10 @@ export class CountryFilterComponent implements OnInit {
   }
 
   public ngOnInit() {
+    const visa = { num: '7653465w2348', valid: new Date() };
     this.filterForm = this.formBuilder.group({
-      countryName: new FormControl('', [Validators.required, Validators.minLength(2)])
+      countryName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      month: [visa.valid.getMonth(), Validators.required] // new FormControl(visa.valid.getMonth())
     });
   }
 }

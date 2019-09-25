@@ -5,7 +5,11 @@
   "projects": {
     "world-bank": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "wb",
@@ -120,6 +124,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "world-bank"
 }
