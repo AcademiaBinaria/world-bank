@@ -3,19 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Country } from '../shared/models/country.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CountriesService {
+@Injectable()
+export class RegionsService {
   constructor(private http: HttpClient) {}
 
-  public getAll$(): Observable<Country[]> {
-    const url = `${environment.url}/country?per_page=1000&format=json`;
+  public getAll$(): Observable<any[]> {
+    const url = `${environment.url}/region?per_page=1000&format=json`;
     return this.http.get<any>(url).pipe(
       map(res => res[1]),
-      map(apiArray => apiArray.map(item => ({ ...item, region: item.region.value })))
+      map(apiArray => apiArray.filter(item => item.id !== ''))
     );
   }
 }

@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   public filterCountries(countryName: string) {
-    const filtrados = this.allCountries.filter(c => c.name.includes(countryName));
+    const filtrados = this.allCountries.filter(c => c.name.toLowerCase().includes(countryName.toLowerCase()));
     this.store.set({ numCountries: filtrados.length });
     this.countries$ = of(filtrados);
   }
