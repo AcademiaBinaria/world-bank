@@ -12,13 +12,7 @@ export class CacheInterceptorService {
     if (cachedResponse) {
       return of(new HttpResponse({ body: cachedResponse }));
     } else {
-      return next.handle(request).pipe(
-        tap(event => {
-          if (event instanceof HttpResponse) {
-            this.cacheSet(request.url, event);
-          }
-        })
-      );
+      return next.handle(request).pipe(tap(event => this.cacheSet(request.url, event)));
     }
   }
   cacheSet(url: string, event: HttpEvent<any>) {
@@ -27,8 +21,7 @@ export class CacheInterceptorService {
     }
   }
   cacheGet(url: string) {
-    const evt = localStorage.getItem(url);
-    return evt ? JSON.parse(evt) : null;
+    return JSON.parse(localStorage.getItem(url));
   }
 
   constructor() {}
