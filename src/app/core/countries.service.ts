@@ -12,7 +12,7 @@ export class CountriesService {
   constructor(private http: HttpClient) {}
 
   public getAll$(): Observable<Country[]> {
-    const url = `${environment.url}/country?per_page=1000&format=json`;
+    const url = `${environment.url}/country`;
     return this.http.get<any>(url).pipe(
       map(res => res[1]),
       map(apiArray => apiArray.map(item => ({ ...item, region: item.region.value })))
