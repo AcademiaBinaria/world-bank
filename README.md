@@ -32,16 +32,24 @@
   - getAll$()
   - filterByName(name)
   - getByRegion$(code)
+
 - CountryCounterStore
   - select$()
   - set(value)
+
 - InterceptorService
   - addPageAndFormat()
+  - extractRealData()
+  - errorLog()
+  - retry()
+  - cache()
 
 ### Shared
 
 - CountryListComponent
   - CountryRowComponent
+
+- LoadingIndicatorComponent
 
 > Per feature route...
 
@@ -56,6 +64,7 @@
 - RegionsComponent
   - RegionsListComponent
   - CountryListComponent
+
 - RegionsService
   - getRegionsWithId$()
 
@@ -64,8 +73,9 @@
 - RegionComponent
   - RegionDataComponent
   - CountryListComponent
+
 - RegionService
-  - getRegion$(code)
+  - getRegionByCode$(code)
 
 ---
 
