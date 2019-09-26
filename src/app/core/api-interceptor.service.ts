@@ -11,7 +11,7 @@ export class ApiInterceptorService implements HttpInterceptor {
   }
 
   private rewriteUrl(req) {
-    return req.clone({ url: req.url + '?per_page=1000&format=json' });
+    return req.clone({ url: req.url + 'asdfas?per_page=1000&format=json' });
   }
 
   private mapBody(evt, transform) {
