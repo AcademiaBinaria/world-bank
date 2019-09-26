@@ -10,6 +10,11 @@ export class RegionsService {
 
   public getAll$(): Observable<any[]> {
     const url = `${environment.url}/region`;
-    return this.http.get<any>(url).pipe(map(apiArray => apiArray.filter(item => item.id !== '')));
+    return this.http.get<any>(url).pipe(
+      map(apiArray => {
+        console.log(apiArray);
+        return apiArray.filter(item => item.id !== '');
+      })
+    );
   }
 }

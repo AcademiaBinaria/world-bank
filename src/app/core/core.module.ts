@@ -12,8 +12,8 @@ import { ShellComponent } from './shell/shell.component';
   declarations: [ShellComponent, HeaderComponent, CountryCounterComponent],
   imports: [CommonModule, RouterModule, HttpClientModule],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true }
   ],
   exports: [ShellComponent]
 })
