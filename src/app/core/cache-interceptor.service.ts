@@ -17,11 +17,11 @@ export class CacheInterceptorService {
   }
   cacheSet(url: string, event: HttpEvent<any>) {
     if (event instanceof HttpResponse) {
-      localStorage.setItem(url, JSON.stringify(event.body));
+      // localStorage.setItem(url, JSON.stringify(event.body));
     }
   }
   cacheGet(url: string) {
-    return JSON.parse(localStorage.getItem(url));
+    return null; // JSON.parse(localStorage.getItem(url));
   }
 
   constructor() {}
