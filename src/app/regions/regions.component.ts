@@ -10,7 +10,7 @@ import { RegionsService } from './regions.service';
 export class RegionsComponent implements OnInit {
   public regions$ = this.regionsService.getAll$();
 
-  constructor(private regionsService: RegionsService, private miCadena: string) {}
+  constructor(private regionsService: RegionsService) {}
 
   ngOnInit() {}
 }

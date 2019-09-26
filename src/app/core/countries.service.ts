@@ -13,9 +13,6 @@ export class CountriesService {
 
   public getAll$(): Observable<Country[]> {
     const url = `${environment.url}/country`;
-    return this.http.get<any>(url).pipe(
-      map(res => res[1]),
-      map(apiArray => apiArray.map(item => ({ ...item, region: item.region.value })))
-    );
+    return this.http.get<any>(url).pipe(map(apiArray => apiArray.map(item => ({ ...item, region: item.region.value }))));
   }
 }
